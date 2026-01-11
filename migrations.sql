@@ -1,0 +1,10 @@
+CREATE DATABASE projekts_iesmins;
+USE projekts_iesmins;
+
+CREATE TABLE accounts (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+NAME VARCHAR(30) NOT NULL,
+last_name VARCHAR(30) NOT NULL,
+phone INT(8) NOT NULL,
+pcode VARCHAR(13) NOT NULL,
+);
