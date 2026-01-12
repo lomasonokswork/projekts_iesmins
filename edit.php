@@ -12,7 +12,7 @@ if ($userId) {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-// Handle form submission
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $user) {
     $stmt = $pdo->prepare("UPDATE accounts SET name = ?, last_name = ?, phone = ?, pcode = ? WHERE id = ?");
     $stmt->execute([
