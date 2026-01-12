@@ -35,8 +35,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $user) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
 </head>
+<style>
+    .container {
+        display: flex;
+        height: 100vw;
+        width: 100vw;
+        overflow: hidden;
+        justify-content: center;
+    }
 
-<body>
+    form {
+        padding-top: 30vh;
+    }
+
+    input {
+        width: 250px;
+        height: 50px;
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 5px;
+    }
+
+    button {
+        width: 250px;
+        height: 50px;
+        margin: 5px;
+        font-size: 1.5rem;
+    }
+</style>
+
+<body class="container">
     <?php if ($user): ?>
         <form id="edituser" method="POST">
             <input type="text" name="firstname" placeholder="First Name" value="<?= htmlspecialchars($user['name']) ?>"

@@ -20,15 +20,15 @@ function rotate() {
 
 function createFloatingShapes() {
   const cell2 = document.getElementById('cell2confetti');
-  const colors = ['#fd0606', '#03f6e6', '#00d0ff', '#ff4800', '#00f9bb', '#ffcc00', '#b300ff', '#0687cc'];
+  const colors = ['#fd0606', '#ffffff', '#ff0000', '#ff4800', '#00f947', '#ffcc00', '#b300ff', '#0687cc'];
   
   function createShape() {
     const shape = document.createElement('div');
     const color = colors[Math.floor(Math.random() * colors.length)];
-    const size = Math.random() * 20 + 20;
+    const size = Math.random() * 1 + 10;
     const startX = Math.random() * 500;
     const startY = -50;
-    const duration = Math.random() * 8 + 6;
+    const duration = Math.random() * 2 + 6;
     const rotation = Math.random() * 360;
     
     shape.style.position = 'absolute';
@@ -47,11 +47,11 @@ function createFloatingShapes() {
     shape.animate([
       { 
         transform: `translateY(0px) rotate(${rotation}deg)`,
-        opacity: '0.8'
+        opacity: '1'
       },
       { 
         transform: `translateY(${350}px) rotate(${rotation + 360}deg)`,
-        opacity: '0'
+        opacity: '0.2'
       }
     ], {
       duration: duration * 1000,
@@ -66,7 +66,7 @@ function createFloatingShapes() {
   }
   
   // Create shapes continuously
-  setInterval(createShape, 500);
+  setInterval(createShape, 50);
 }
 
 // Initialize on page load
