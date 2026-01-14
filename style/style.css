@@ -6,7 +6,7 @@ body {
   background-color: gray;
 }
 .html {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .container {
   width: 100%;

@@ -1,8 +1,13 @@
 <?php
+session_start();
 //db connection
 $dsn = "mysql:host=localhost;port=3306;user=root;password=;dbname=projekts_iesmins;charset=utf8mb4";
 $pdo = new PDO($dsn);
 //var_dump($pdo);
+
+// Get errors from session
+$errors = $_SESSION['errors'] ?? [];
+unset($_SESSION['errors']);
 
 // Handle delete request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_delete'])) {
@@ -75,6 +80,13 @@ $sky = weatherCodeToText($code);
                 </div>
             </div>
             <div class="cell" id="cell7">
+                <?php if (!empty($errors)): ?>
+                    <div class="errors">
+                        <?php foreach ($errors as $error): ?>
+                            <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
                 <form id="adduser" method="POST" action="adduser.php">
                     <input type="text" name="firstname" placeholder="First Name" required><br>
                     <input type="text" name="lastname" placeholder="Last Name" required><br>
@@ -90,7 +102,7 @@ $sky = weatherCodeToText($code);
                         <option value="">Select a user to edit</option>
                         <?php foreach ($userList as $user) { ?>
                             <option value="<?= $user['id'] ?>">
-                                <?= $user['name'] . ' ' . $user['last_name'] ?>
+                                <?= $user['NAME'] . ' ' . $user['last_name'] ?>
                             </option>
                         <?php } ?>
                     </select>
@@ -102,7 +114,7 @@ $sky = weatherCodeToText($code);
                     <select name="delete_user">
                         <?php foreach ($userList as $user) { ?>
                             <option value="<?= $user['id'] ?>">
-                                <?= $user['name'] . ' ' . $user['last_name'] ?>
+                                <?= $user['NAME'] . ' ' . $user['last_name'] ?>
                             </option>
                         <?php } ?>
                     </select>

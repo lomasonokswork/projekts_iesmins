@@ -43,7 +43,6 @@ function createFloatingShapes() {
     shape.style.boxShadow = `0 4px 8px rgba(0,0,0,0.2)`;
     shape.style.cursor = 'pointer';
     
-    // Animation
     shape.animate([
       { 
         transform: `translateY(0px) rotate(${rotation}deg)`,
@@ -61,14 +60,13 @@ function createFloatingShapes() {
     
     cell2.appendChild(shape);
     
-    // Remove after animation completes
+    // laiks kad pazud
     setTimeout(() => shape.remove(), duration * 1000);
   }
   
-  // Create shapes continuously
+  // atrums
   setInterval(createShape, 50);
 }
 
-// Initialize on page load
 window.addEventListener('DOMContentLoaded', createFloatingShapes);
 
